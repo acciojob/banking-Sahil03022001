@@ -5,6 +5,13 @@ import java.util.Arrays;
 public class CurrentAccount extends BankAccount{
     String tradeLicenseId; //consists of Uppercase English characters only
 
+    private final double minBalance = 5000.0;
+
+    @Override
+    public double getMinBalance() {
+        return minBalance;
+    }
+
     public String getTradeLicenseId() {
         return tradeLicenseId;
     }
@@ -15,9 +22,11 @@ public class CurrentAccount extends BankAccount{
 
     public CurrentAccount(String name, double balance, String tradeLicenseId) throws Exception {
         // minimum balance is 5000 by default. If balance is less than 5000, throw "Insufficient Balance" exception
-        super(name, balance, 5000);
+        super(name, balance, 5000.0);
+        if(balance < this.minBalance) {
+            throw new Exception("Insufficient Balance");
+        }
         this.tradeLicenseId = tradeLicenseId;
-        validateLicenseId();
     }
 
     public void validateLicenseId() throws Exception {

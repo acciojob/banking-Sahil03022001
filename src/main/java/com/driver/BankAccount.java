@@ -31,10 +31,10 @@ public class BankAccount {
         this.minBalance = minBalance;
     }
 
+    public BankAccount() {
+    }
+
     public BankAccount(String name, double balance, double minBalance) throws Exception {
-        if(balance < minBalance) {
-            throw new Exception("Insufficient Balance");
-        }
         this.name = name;
         this.balance = balance;
         this.minBalance = minBalance;
